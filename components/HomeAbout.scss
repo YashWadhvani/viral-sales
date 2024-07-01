@@ -1,0 +1,54 @@
+.home-about {
+  position: relative;
+  width: 100%;
+
+  .home-about-content {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    h2 {
+      font-size: 3.6rem;
+      font-weight: 400;
+      color: #262626;
+      line-height: 1.2;
+      // overflow: hidden;
+      div {
+        height: calc(3.6rem * 1.2);
+        overflow: hidden;
+
+        span {
+          display: block;
+          transform: translateY(100%);
+          font-size: 3.6rem !important;
+          font-weight: 400;
+          color: #262626;
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+}
+
+//Mobile Responsiveness
+
+@media (max-width: 767px) {
+  .home-about .home-about-content {
+    width: 100%;
+    h2 {
+      padding: 15rem 0;
+      line-height: 1.2;
+    }
+    a {
+      margin: 15rem 0;
+      width: 85%;
+      height: 30rem;
+      line-height: 0.9;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .home-about .home-about-content {
+    width: 75%;
+  }
+}
