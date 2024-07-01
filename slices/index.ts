@@ -5,14 +5,14 @@ import { defineSliceZoneComponents } from "@prismicio/vue";
 
 export const components = defineSliceZoneComponents({
   featured_projects: defineAsyncComponent(
-    () => import("./FeaturedProjects/index.vue"),
+    () => import("./FeaturedProjects/index.vue")
   ),
   home_about_section: defineAsyncComponent(
-    () => import("./HomeAboutSection/index.vue"),
+    () => import("./HomeAboutSection/index.vue")
   ),
-  home_hero: defineAsyncComponent(() => import("./HomeHero/index.vue")),
+  home_hero: defineAsyncComponent(() => import("./Homehero/index.vue")),
   home_products_slider: defineAsyncComponent(
-    () => import("./HomeProductsSlider/index.vue"),
+    () => import("./HomeProductsSlider/index.vue")
   ),
   product_card: defineAsyncComponent(() => import("./ProductCard/index.vue")),
   testimonials: defineAsyncComponent(() => import("./Testimonials/index.vue")),
