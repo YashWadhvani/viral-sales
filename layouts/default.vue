@@ -1,32 +1,33 @@
 <template>
-
-    <div id="viewport">
-      <div class="overlay-trans"></div>
-      <Header />
-      <NuxtPage /> <!-- Render the content of the pages -->
-    </div>
-
+  <div id="viewport">
+    <div class="overlay-trans"></div>
+    <Header />
+    <NuxtPage />
+    <!-- Render the content of the pages -->
+  </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'; // Import onMounted from Vue
-import { useSmoothScroll } from '../composables/useSmoothScroll.js'; // Import the useSmoothScroll function
- // Import ScrollTrigger from GSAP
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger'; 
-import MouseFollower from 'mouse-follower';
+import { onMounted } from "vue"; // Import onMounted from Vue
+import { useSmoothScroll } from "../composables/useSmoothScroll.js"; // Import the useSmoothScroll function
+// Import ScrollTrigger from GSAP
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import MouseFollower from "mouse-follower";
 
-import {useRouter} from 'vue-router';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRouter } from "vue-router";
+if (process.client) {
+  gsap.registerPlugin(ScrollTrigger);
+}
 const router = useRouter();
 
 const animateOut = () => {
-  const overlay = document.querySelector('.overlay-trans');
-  return new Promise((resolve) => { // Pass resolve as an argument
+  const overlay = document.querySelector(".overlay-trans");
+  return new Promise((resolve) => {
+    // Pass resolve as an argument
     gsap.to(overlay, {
-      height: '100vh',
-      duration: 0.5, 
+      height: "100vh",
+      duration: 0.5,
       ease: "expo.in",
       onComplete: resolve, // Call resolve when animation finishes
     });
@@ -34,59 +35,59 @@ const animateOut = () => {
 };
 
 const animateIn = () => {
-  const overlay = document.querySelector('.overlay-trans');
+  const overlay = document.querySelector(".overlay-trans");
 
-  return new Promise((resolve) => { // Pass resolve as an argument
+  return new Promise((resolve) => {
+    // Pass resolve as an argument
     gsap.to(overlay, {
-      height: '0%',
+      height: "0%",
       duration: 1.2,
       ease: "expo.out",
-      onComplete: resolve
+      onComplete: resolve,
     });
   });
 };
 
-
 router.beforeEach((to, from, next) => {
-  animateOut().then(() => { // Wait for animation to finish before navigating
+  animateOut().then(() => {
+    // Wait for animation to finish before navigating
     next();
   });
 });
 
-router.afterEach(animateIn); 
-
+router.afterEach(animateIn);
 
 onMounted(() => {
-  useSmoothScroll(); 
+  useSmoothScroll();
   MouseFollower.registerGSAP(gsap);
-  
+
   const cursor = new MouseFollower({
     el: null,
     container: document.body,
-    className: 'mf-cursor',
-    innerClassName: 'mf-cursor-inner',
-    textClassName: 'mf-cursor-text',
-    mediaClassName: 'mf-cursor-media',
-    mediaBoxClassName: 'mf-cursor-media-box',
-    iconSvgClassName: 'mf-svgsprite',
-    iconSvgNamePrefix: '-',
-    iconSvgSrc: '',
-    dataAttr: 'cursor',
-    hiddenState: '-hidden',
-    textState: '-text',
-    iconState: '-icon',
-    activeState: '-active',
-    mediaState: '-media',
+    className: "mf-cursor",
+    innerClassName: "mf-cursor-inner",
+    textClassName: "mf-cursor-text",
+    mediaClassName: "mf-cursor-media",
+    mediaBoxClassName: "mf-cursor-media-box",
+    iconSvgClassName: "mf-svgsprite",
+    iconSvgNamePrefix: "-",
+    iconSvgSrc: "",
+    dataAttr: "cursor",
+    hiddenState: "-hidden",
+    textState: "-text",
+    iconState: "-icon",
+    activeState: "-active",
+    mediaState: "-media",
     stateDetection: {
-        '-pointer': 'a,button',
-        '-hidden': 'iframe',
-        '-inverse': '.dark-bg',
-        '-text': '.custom-slider'
+      "-pointer": "a,button",
+      "-hidden": "iframe",
+      "-inverse": ".dark-bg",
+      "-text": ".custom-slider",
     },
     // visible: true,
     // visibleOnState: false,
     speed: 0.55,
-    ease: 'expo.out',
+    ease: "expo.out",
     overwrite: true,
     skewing: 0,
     skewingText: 2,
@@ -99,37 +100,36 @@ onMounted(() => {
     hideOnLeave: true,
     hideTimeout: 300,
     hideMediaTimeout: 300,
-  
-});
-
-// Sliders
-const sliders = document.querySelectorAll('.custom-slider');
-if (sliders.length) { // Check if there are any sliders found
-  sliders.forEach((i) => {
-    i.addEventListener('mouseenter', () => {
-      cursor.show();
-      cursor.setText('Drag');
-    });
-
-    i.addEventListener('mousemove', (e) => {
-      cursor.show();
-      cursor.setText('Drag');
-    });
-
-    i.addEventListener('mousedown', () => {
-      cursor.show();
-      cursor.setText('Drag');
-    });
-
-    i.addEventListener('mouseleave', () => {
-      cursor.removeText();
-    });
   });
-} else {
-  console.warn("No elements found with class 'custom-slider'"); // Optional warning
-}
-});
 
+  // Sliders
+  const sliders = document.querySelectorAll(".custom-slider");
+  if (sliders.length) {
+    // Check if there are any sliders found
+    sliders.forEach((i) => {
+      i.addEventListener("mouseenter", () => {
+        cursor.show();
+        cursor.setText("Drag");
+      });
+
+      i.addEventListener("mousemove", (e) => {
+        cursor.show();
+        cursor.setText("Drag");
+      });
+
+      i.addEventListener("mousedown", () => {
+        cursor.show();
+        cursor.setText("Drag");
+      });
+
+      i.addEventListener("mouseleave", () => {
+        cursor.removeText();
+      });
+    });
+  } else {
+    console.warn("No elements found with class 'custom-slider'"); // Optional warning
+  }
+});
 </script>
 <!-- You may include a style block if necessary -->
 <style scoped>

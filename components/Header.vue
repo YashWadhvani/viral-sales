@@ -135,18 +135,20 @@ export default {
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { onMounted } from "vue"; // Import onMounted from Vue
 
-gsap.registerPlugin(ScrollTrigger);
+if (process.client) {
+  gsap.registerPlugin(ScrollTrigger);
 
-onMounted(() => {
-  animateHeader();
-});
-
-const animateHeader = () => {
-  gsap.to(".header", {
-    opacity: 1,
-    duration: 1, // Animation duration
+  onMounted(() => {
+    animateHeader();
   });
-};
+
+  const animateHeader = () => {
+    gsap.to(".header", {
+      opacity: 1,
+      duration: 1, // Animation duration
+    });
+  };
+}
 </script>
 
 <style src="./Header.scss" scoped></style>
