@@ -14,21 +14,23 @@
     "@prismicio/vue": "^4.2.2",
     "@storyblok/nuxt": "^6.0.10",
     "@studio-freight/lenis": "^1.0.42",
-    "@vueuse/motion": "^2.1.0",
-    "framer-motion": "^11.0.24",
+    "@vueuse/motion": "^2.2.3",
+    "framer-motion": "^11.2.12",
     "gsap": "^3.12.5",
     "locomotive-scroll": "^4.1.4",
     "mouse-follower": "^1.1.2",
-    "nuxt": "^3.11.1",
-    "sass": "^1.72.0",
-    "swiper": "^11.1.0",
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.0",
+    "npcheck": "^1.0.1",
+    "npm-check": "^6.0.1",
+    "nuxt": "^3.12.2",
+    "sass": "^1.77.6",
+    "swiper": "^11.1.4",
+    "vue": "^3.4.31",
+    "vue-router": "^4.4.0",
     "vue3-carousel": "^0.3.3"
   },
   "devDependencies": {
     "@nuxtjs/prismic": "^3.2.1",
-    "@slicemachine/adapter-nuxt": "^0.3.38",
-    "slice-machine-ui": "^1.26.0"
+    "@slicemachine/adapter-nuxt": "^0.3.42",
+    "slice-machine-ui": "^2.2.1"
   }
 }
