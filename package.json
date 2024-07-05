@@ -29,7 +29,7 @@
     "vue3-carousel": "^0.3.3"
   },
   "devDependencies": {
-    "@nuxtjs/prismic": "^3.2.1",
+    "@nuxtjs/prismic": "^3.3.1",
     "@slicemachine/adapter-nuxt": "^0.3.42",
     "slice-machine-ui": "^2.2.1"
   }
