@@ -1,7 +1,7 @@
 <template>
   <div class="hs-slider custom-slider">
     <swiper
-      :slides-per-view="2"
+      :slides-per-view="slidesPerView"
       :space-between="50"
       @swiper="onSwiper"
       @slideChange="onSlideChange"
