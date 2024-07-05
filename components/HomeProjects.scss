@@ -6,9 +6,18 @@
   .home-projects-title {
     // padding: 5rem 0;
     padding-bottom: 10rem;
+    // h1 {
+    //   font-size: 5rem; //3.6rem
+    //   color: #fff;
+    // }
     h1 {
-      font-size: 5rem; //3.6rem
+      font-size: 13rem;
+      font-weight: 100;
+      line-height: 0.9;
       color: #fff;
+      span {
+        font-weight: 300;
+      }
     }
   }
 
@@ -185,6 +194,19 @@
     }
 
     .home-projects-main {
+      .hp-title {
+        width: max-content;
+        h2 {
+          font-size: 10rem !important;
+        }
+      }
+
+      .hp-desc {
+        width: 150%;
+        p {
+          font-size: 6rem !important;
+        }
+      }
       .hp-row:nth-of-type(3) {
         flex-direction: column-reverse;
       }
@@ -220,6 +242,9 @@
         margin-top: 10rem;
       }
 
+      .horizontalImg {
+        height: 110%;
+      }
       .hp-content {
         margin-bottom: 10rem;
       }

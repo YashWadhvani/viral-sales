@@ -96,7 +96,7 @@
 
   .footer-copyright {
     padding-top: 10rem;
-    padding-bottom: 5px;
+    padding-bottom: 20px; //5px
     p {
       font-size: 1.2rem;
       color: #fff;
@@ -108,9 +108,21 @@
 
 @media (max-width: 767px) {
   .footer {
+    .footer-links {
+      h6 {
+        font-size: 5rem !important;
+        padding-bottom: 10px;
+      }
+      li {
+        font-size: 4rem !important;
+      }
+    }
     .footer-cta {
       h2 {
         width: 120%;
+      }
+      a {
+        height: 35rem !important;
       }
     }
   }

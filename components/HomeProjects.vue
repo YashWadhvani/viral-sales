@@ -2,7 +2,10 @@
   <div class="home-projects section dark-bg">
     <div class="container-narrow">
       <div class="home-projects-title">
-        <h1>Featured Projects</h1>
+        <h1>
+          <i>Featured</i><br />
+          <span>Projects</span>
+        </h1>
         <!-- <h2>Featured Projects</h2> -->
       </div>
 
@@ -32,6 +35,7 @@
             <img
               :src="homeData.data.slices[2].primary.project_two_image.url"
               alt=""
+              class="horizontalImg"
             />
           </div>
 
@@ -77,6 +81,7 @@
             <img
               :src="homeData.data.slices[2].primary.project_four_image.url"
               alt=""
+              class="horizontalImg"
             />
           </div>
 

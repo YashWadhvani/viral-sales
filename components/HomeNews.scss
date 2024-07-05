@@ -60,12 +60,20 @@
 @media (max-width: 767px) {
   .home-news {
     .news-container {
+      width: fit-content;
       .col-50 {
         width: 100%;
       }
 
       .news-text {
         margin: 5% 0;
+        padding-top: 10rem;
+        h3 {
+          font-size: 9rem !important;
+        }
+        p {
+          font-size: 5rem !important;
+        }
       }
     }
   }

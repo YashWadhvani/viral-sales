@@ -19,3 +19,14 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .home-banner {
+    &-wrapper {
+      height: 120rem;
+      img {
+        height: 80%;
+      }
+    }
+  }
+}
