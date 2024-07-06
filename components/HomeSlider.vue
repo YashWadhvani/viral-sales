@@ -5,13 +5,12 @@
       :space-between="50"
       @swiper="onSwiper"
       @slideChange="onSlideChange"
-      navigation
-      :navigation="
-        isMobile
-          ? { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
-          : false
-      "
+      :navigation="{
+        nextEl: isMobile ? '.swiper-button-next' : null,
+        prevEl: isMobile ? '.swiper-button-prev' : null,
+      }"
       :modules="modules"
+      class="mySwiper"
     >
       <swiper-slide
         v-for="(item, index) in homeData.data.slices[3].items"
@@ -22,9 +21,12 @@
           <h2>{{ item.home_product_title }}</h2>
         </div>
       </swiper-slide>
-      <div v-if="isMobile" class="swiper-button-next"></div>
-      <div v-if="isMobile" class="swiper-button-prev"></div>
     </swiper>
+
+    <div v-if="isMobile" class="swiper-navigation">
+      <div class="swiper-button-prev custom-button"></div>
+      <div class="swiper-button-next custom-button"></div>
+    </div>
   </div>
 </template>
 
@@ -45,7 +47,7 @@ export default {
     SwiperSlide,
   },
   setup() {
-    const slidesPerView = ref(2); //Responsiveness
+    const slidesPerView = ref(2); // Responsiveness
     const isMobile = ref(false);
     const onSlideChange = () => {
       console.log("slide change");
@@ -55,7 +57,7 @@ export default {
 
     const homeData = homePageData._rawValue; // Ensure data is available
 
-    //Responsiveness
+    // Responsiveness
     const handleResize = () => {
       console.log(window.innerWidth);
       if (window.innerWidth <= 767) {
@@ -78,7 +80,7 @@ export default {
       window.removeEventListener("resize", handleResize);
     });
 
-    //Responsiveness Code Ends
+    // Responsiveness Code Ends
 
     return {
       homeData,
@@ -92,88 +94,3 @@ export default {
 </script>
 
 <style scoped src="./HomeSlider.scss"></style>
-
-<!-- <template>
-  <div class="hs-slider custom-slider">
-    <swiper
-      :slides-per-view="slidesPerView"
-      :space-between="50"
-      @swiper="onSwiper"
-      @slideChange="onSlideChange"
-      :navigation="
-        isMobile
-          ? { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
-          : false
-      "
-      :modules="[Navigation, Pagination]"
-    >
-      <swiper-slide
-        v-for="(item, index) in homeData.data.slices[3].items"
-        :key="index"
-      >
-        <div class="hs-slide">
-          <img :src="item.home_product_image.url" alt="" />
-          <h2>{{ item.home_product_title }}</h2>
-        </div>
-      </swiper-slide>
-      <div v-if="isMobile" class="swiper-button-next"></div>
-      <div v-if="isMobile" class="swiper-button-prev"></div>
-    </swiper>
-  </div>
-</template>
-
-<script>
-import { ref, onMounted, onUnmounted, inject } from "vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import SwiperCore, { Navigation, Pagination } from "swiper";
-
-// Install modules
-SwiperCore.use([Navigation, Pagination]);
-
-import "swiper/swiper-bundle.css"; // Import Swiper styles
-
-export default {
-  components: {
-    Swiper,
-    SwiperSlide,
-  },
-  setup() {
-    const slidesPerView = ref(2); //Responsiveness
-    const isMobile = ref(false); // Define isMobile ref
-    const onSlideChange = () => {
-      console.log("slide change");
-    };
-
-    const homePageData = inject("homePageData");
-
-    const homeData = homePageData._rawValue; // Ensure data is available
-
-    // Responsiveness
-    const handleResize = () => {
-      if (window.innerWidth <= 767) {
-        slidesPerView.value = 1;
-        isMobile.value = true;
-      } else {
-        slidesPerView.value = 2;
-        isMobile.value = false;
-      }
-    };
-
-    onMounted(() => {
-      handleResize();
-      window.addEventListener("resize", handleResize);
-    });
-
-    onUnmounted(() => {
-      window.removeEventListener("resize", handleResize);
-    });
-
-    return {
-      homeData,
-      onSlideChange,
-      slidesPerView,
-      isMobile,
-    };
-  },
-};
-</script> -->

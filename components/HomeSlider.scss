@@ -5,6 +5,7 @@
   .swiper {
     overflow: visible;
   }
+
   .hs-slide {
     img {
       width: 100%;
@@ -20,6 +21,35 @@
       margin-top: 1.6rem;
     }
   }
+
+  .swiper-navigation {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+    .custom-button {
+      background-color: #000;
+      color: #fff;
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin: 55px 0 !important;
+    }
+
+    .custom-button::after {
+      font-size: 16px;
+    }
+  }
+
+  // Hide default Swiper navigation buttons
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
 }
 
 @media (max-width: 767px) {
@@ -30,5 +60,19 @@
     img {
       border-radius: 15px;
     }
+  }
+
+  .swiper-navigation {
+    .custom-button {
+      width: 30px;
+      height: 30px;
+      margin: 0 5px;
+    }
+  }
+
+  // Show custom buttons on mobile
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: flex;
   }
 }
