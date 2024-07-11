@@ -8,9 +8,15 @@
       <div class="ht-slider custom-slider">
         <swiper
           :slides-per-view="slidesPerView"
-          :space-between="25"
+          :space-between="50"
           @swiper="onSwiper"
           @slideChange="onSlideChange"
+          :navigation="{
+            nextEl: isMobile ? '.swiper-button-next' : null,
+            prevEl: isMobile ? '.swiper-button-prev' : null,
+          }"
+          :modules="modules"
+          class="mySwiper"
         >
           <swiper-slide
             v-for="(item, index) in homeData.data.slices[4].items"
@@ -31,6 +37,10 @@
             </div>
           </swiper-slide>
         </swiper>
+        <div v-if="isMobile" class="swiper-navigation">
+          <div class="swiper-button-prev custom-button"></div>
+          <div class="swiper-button-next custom-button"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -44,9 +54,8 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { ref, onMounted, onUnmounted } from "vue";
-
 import { inject } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
 export default {
   components: {
@@ -55,9 +64,7 @@ export default {
   },
   setup() {
     const slidesPerView = ref(2); //Responsiveness
-    const onSwiper = (swiper) => {
-      // console.log(swiper);
-    };
+    const isMobile = ref(false);
     const onSlideChange = () => {
       console.log("slide change");
     };
@@ -67,10 +74,15 @@ export default {
 
     //Responsiveness
     const handleResize = () => {
+      console.log(window.innerWidth);
       if (window.innerWidth <= 767) {
+        console.log("Inside If");
         slidesPerView.value = 1;
+        isMobile.value = true;
       } else {
+        console.log("Inside Else");
         slidesPerView.value = 2;
+        isMobile.value = false;
       }
     };
 
@@ -87,9 +99,9 @@ export default {
 
     return {
       homeData,
-      onSwiper,
       onSlideChange,
       slidesPerView,
+      isMobile,
       modules: [Navigation, Pagination],
     };
   },

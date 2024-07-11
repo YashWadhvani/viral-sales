@@ -29,11 +29,18 @@
 
 @media (max-width: 767px) {
   .home-products {
+    .hpr-title-row {
+      h1 {
+        font-size: 25rem !important;
+        padding-bottom: 10rem;
+      }
+    }
     .hpr-cta {
       width: 100%;
       h4 {
         text-align: center;
-        padding: 0 10rem;
+        padding: 0 5rem;
+        font-size: 7.5rem !important;
       }
     }
   }

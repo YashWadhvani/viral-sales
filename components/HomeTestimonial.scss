@@ -12,7 +12,41 @@
   }
 
   .ht-slider {
+    position: relative;
     padding: 3rem 0;
+
+    .swiper {
+      overflow: visible;
+    }
+
+    .swiper-navigation {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+
+      .custom-button {
+        background-color: #000;
+        color: #fff;
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin: 36rem 40rem !important;
+      }
+
+      .custom-button::after {
+        font-size: 16px;
+      }
+    }
+
+    // Hide default Swiper navigation buttons
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none;
+    }
   }
 
   .ht-card {
@@ -54,9 +88,10 @@
 
 @media (max-width: 767px) {
   .home-testimonials {
+    padding-bottom: 25rem;
     .ht-title {
       h4 {
-        font-size: 5.5rem !important;
+        font-size: 7.5rem !important;
       }
     }
 
@@ -65,13 +100,35 @@
       height: fit-content;
       padding: 5rem;
 
+      &-header {
+        h4,
+        p {
+          font-size: 5rem !important;
+        }
+      }
+
       &-body {
         p {
           margin-top: 10rem;
           text-align: left;
+          font-size: 6rem !important;
         }
       }
     }
+  }
+
+  .swiper-navigation {
+    .custom-button {
+      width: 30px;
+      height: 30px;
+      margin: 0 5px;
+    }
+  }
+
+  // Show custom buttons on mobile
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: flex;
   }
 }
 
