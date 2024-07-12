@@ -60,7 +60,6 @@
 
 <script setup>
 import Button from "./Button.vue";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 </script>
 
 <style src="./Footer.scss" scoped></style>
