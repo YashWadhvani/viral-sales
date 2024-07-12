@@ -9,18 +9,21 @@
                 Can't Decide which color suits your <br />
                 place the best?
               </h2>
-              <Button buttonText="Contact Us" />
+              <a href="/contact-us">
+                <Button buttonText="Contact Us" />
+              </a>
             </div>
           </div>
           <div class="col-50">
             <div class="footer-links">
               <h6>Quick Links</h6>
               <ul class="footer-menu">
-                <li class="footer-item">About Us</li>
-                <li class="footer-item">Products</li>
-                <li class="footer-item">Our Work</li>
-                <li class="footer-item">Privacy policy</li>
-                <li class="footer-item">Terms and Conditions</li>
+                <li class="footer-item"><a href="/about">About Us</a></li>
+                <li class="footer-item"><a href="/products">Products</a></li>
+                <!-- <li class="footer-item"><a href="/projects">Our Work</a></li> -->
+                <li class="footer-item"><a href="/projects">Projects</a></li>
+                <!-- <li class="footer-item">Privacy policy</li>
+                <li class="footer-item">Terms and Conditions</li> -->
               </ul>
             </div>
           </div>
@@ -30,6 +33,11 @@
             <div class="col-25">
               <div class="social">
                 <p>Follow us:</p>
+                <div class="social-logos">
+                  <img src="../assets/images/facebook.png" alt="Facebook" />
+                  <img src="../assets/images/instagram.png" alt="Instagram" />
+                  <img src="../assets/images/whatsapp.png" alt="Whatsapp" />
+                </div>
               </div>
             </div>
             <div class="col-25">
@@ -39,7 +47,9 @@
               <p>Review Us</p>
             </div>
             <div class="col-25">
-              <p>Contact Us</p>
+              <a href="/contact-us" style="text-decoration: none"
+                ><p>Contact Us</p></a
+              >
             </div>
           </div>
         </div>
@@ -50,6 +60,7 @@
 
 <script setup>
 import Button from "./Button.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 </script>
 
 <style src="./Footer.scss" scoped></style>

@@ -102,6 +102,23 @@ onMounted(() => {
     hideMediaTimeout: 300,
   });
 
+  // Code to disable MouseFollower for Mobiles
+  const disableMouseFollowerOnMobile = () => {
+    if (window.innerWidth < 767) {
+      console.log("On Mobiles");
+      cursor.visible = false;
+      document.body.classList.add("no-cursor");
+    } else {
+      cursor.visible = true;
+      document.body.classList.remove("no-cursor");
+    }
+  };
+
+  disableMouseFollowerOnMobile();
+
+  window.addEventListener("resize", disableMouseFollowerOnMobile);
+  // Code End
+
   // Sliders
   const sliders = document.querySelectorAll(".custom-slider");
   if (sliders.length) {

@@ -106,7 +106,9 @@
           <div class="hp-cta-content">
             <h3>Lovely right? There is more where that came from</h3>
           </div>
-          <Button buttonText="All Projects" />
+          <a href="/projects">
+            <Button buttonText="All Projects" />
+          </a>
         </div>
       </div>
     </div>
