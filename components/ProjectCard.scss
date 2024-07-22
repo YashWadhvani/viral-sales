@@ -50,9 +50,9 @@
           .project-tag {
             border: 1px solid #000;
             border-radius: 30px;
-            padding: 6px 22px;
+            padding: 5px 20px;
             margin-right: 10px;
-            font-size: 2rem !important;
+            font-size: 2rem;
             text-transform: uppercase;
           }
         }
@@ -63,7 +63,7 @@
 
 @media (min-width: 768px) and (max-width: 1199px) {
   .tags-container {
-    width: 110%;
+    width: 125%;
     .project-tag {
       font-size: 3rem !important;
     }
@@ -86,10 +86,12 @@
         padding: 15px 0 0 0;
         .project-tags {
           padding-top: 10px;
-          .project-tag {
-            padding: 5px 15px;
-            border-radius: 18px;
-            span {
+          .tags-container {
+            width: 150%;
+            .project-tag {
+              padding: 5px 15px;
+              border-radius: 18px;
+              font-size: 3.5rem !important;
               width: max-content;
             }
           }
