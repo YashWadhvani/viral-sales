@@ -61,6 +61,15 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 1199px) {
+  .tags-container {
+    width: 110%;
+    .project-tag {
+      font-size: 3rem !important;
+    }
+  }
+}
+
 @media (max-width: 767px) {
   .project-card-wrapper {
     .project-card {
