@@ -1,78 +1,60 @@
 <template>
+  <div v-if="page">
     <div class="project-card-wrapper section">
-        <div class="container-narrow">
-            <div class="project-card">
-                <div class="project-card-image">
-                    <img src="../assets/images/sample-5.png" alt="">
-                </div>
-                <div class="project-card-content">
-                    <h2>Project Title</h2>
-                    <p>There are two main ways to add an image in Nuxt, depending on whether you want Nuxt to optimize the image or not, and where you store the image file.</p>
-                    <div class="project-tags">
-                        <div class="project-tag">
-                            <p>Tag 1</p>
-                        </div>
-                        <div class="project-tag">
-                            <p>Tag 2</p>
-                        </div>
-                        <div class="project-tag">
-                            <p>Tag 3</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="container-narrow">
+        <div
+          v-for="(slice, sliceIndex) in page.data.slices"
+          :key="sliceIndex"
+          class="project-card"
+        >
+          <div
+            v-for="(item, itemIndex) in slice.primary.repeatable_zone"
+            :key="itemIndex"
+          >
+            <div class="project-card-image">
+              <img
+                v-if="item.project_image?.url"
+                :src="item.project_image.url"
+                :alt="item.project_image.alt || 'Default'"
+              />
             </div>
-
-            <div class="project-card">
-                <div class="project-card-image">
-                    <img src="../assets/images/sample-5.png" alt="">
+            <div class="project-card-content">
+              <h2 v-html="item.project_title"></h2>
+              <p>{{ item.project_description }}</p>
+              <div class="project-tags">
+                <div v-if="item.project_tags">
+                  <div class="tags-container">
+                    <span
+                      v-for="(tag, index) in item.project_tags
+                        .split(',')
+                        .map((tag) => tag.trim())"
+                      :key="index"
+                      class="project-tag"
+                    >
+                      {{ tag }}
+                    </span>
+                  </div>
                 </div>
-                <div class="project-card-content">
-                    <h2>Project Title</h2>
-                    <p>There are two main ways to add an image in Nuxt, depending on whether you want Nuxt to optimize the image or not, and where you store the image file.</p>
-                    <div class="project-tags">
-                        <div class="project-tag">
-                            <p>Tag 1</p>
-                        </div>
-                        <div class="project-tag">
-                            <p>Tag 2</p>
-                        </div>
-                        <div class="project-tag">
-                            <p>Tag 3</p>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-
-            <div class="project-card">
-                <div class="project-card-image">
-                    <img src="../assets/images/sample-5.png" alt="">
-                </div>
-                <div class="project-card-content">
-                    <h2>Project Title</h2>
-                    <p>There are two main ways to add an image in Nuxt, depending on whether you want Nuxt to optimize the image or not, and where you store the image file.</p>
-                    <div class="project-tags">
-                        <div class="project-tag">
-                            <p>Tag 1</p>
-                        </div>
-                        <div class="project-tag">
-                            <p>Tag 2</p>
-                        </div>
-                        <div class="project-tag">
-                            <p>Tag 3</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+  <div v-else>
+    <p>Loading...</p>
+  </div>
 </template>
 
-<script>
-    export default {
-        
-    }
+<script setup lang="ts">
+import { useAsyncData } from "#app";
+
+const prismic = usePrismic();
+const { data: page } = await useAsyncData("projects", () =>
+  prismic.client.getSingle("projects")
+);
+console.log(page);
 </script>
 
-<style src="./ProjectCard.scss" scoped>
-
-</style>
+<style src="./ProjectCard.scss" scoped></style>

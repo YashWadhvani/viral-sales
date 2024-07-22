@@ -29,10 +29,10 @@
           </div>
         </div>
         <div class="footer-copyright">
-          <div class="row">
+          <div class="row" style="align-items: center">
             <div class="col-25">
               <div class="social">
-                <p>Follow us:</p>
+                <!-- <p>Follow us:</p> -->
                 <div class="social-logos">
                   <img src="../assets/images/facebook.png" alt="Facebook" />
                   <img src="../assets/images/instagram.png" alt="Instagram" />
@@ -41,7 +41,12 @@
               </div>
             </div>
             <div class="col-25">
-              <p>Visit Us</p>
+              <a
+                href="https://maps.app.goo.gl/EARVEEsdKvrkxQU99"
+                style="text-decoration: none"
+                target="_blank"
+                ><p>Visit Us</p></a
+              >
             </div>
             <div class="col-25">
               <p>Review Us</p>

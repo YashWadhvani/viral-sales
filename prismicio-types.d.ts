@@ -135,7 +135,75 @@ export type ProductsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomeDocument | ProductsDocument;
+type ProjectsDocumentDataSlicesSlice = ProjectsSlice;
+
+/**
+ * Content for Projects documents
+ */
+interface ProjectsDocumentData {
+  /**
+   * Slice Zone field in *Projects*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ProjectsDocumentDataSlicesSlice> /**
+   * Meta Title field in *Projects*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: projects.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Projects*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: projects.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Projects*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Projects document from Prismic
+ *
+ * - **API ID**: `projects`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ProjectsDocumentData>,
+    "projects",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | HomeDocument
+  | ProductsDocument
+  | ProjectsDocument;
 
 /**
  * Primary content in *FeaturedProjects → Default → Primary*
@@ -528,6 +596,98 @@ export type ProductCardSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ProjectCard → Default → Primary → Repeatable Zone*
+ */
+export interface ProjectsSliceDefaultPrimaryRepeatableZoneItem {
+  /**
+   * Project_Image field in *ProjectCard → Default → Primary → Repeatable Zone*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.default.primary.repeatable_zone[].project_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  project_image: prismic.ImageField<never>;
+
+  /**
+   * Project_Title field in *ProjectCard → Default → Primary → Repeatable Zone*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.default.primary.repeatable_zone[].project_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  project_title: prismic.KeyTextField;
+
+  /**
+   * Project_Description field in *ProjectCard → Default → Primary → Repeatable Zone*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.default.primary.repeatable_zone[].project_description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  project_description: prismic.KeyTextField;
+
+  /**
+   * Project_Tags field in *ProjectCard → Default → Primary → Repeatable Zone*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.default.primary.repeatable_zone[].project_tags
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  project_tags: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *ProjectCard → Default → Primary*
+ */
+export interface ProjectsSliceDefaultPrimary {
+  /**
+   * Repeatable Zone field in *ProjectCard → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.default.primary.repeatable_zone[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  repeatable_zone: prismic.GroupField<
+    Simplify<ProjectsSliceDefaultPrimaryRepeatableZoneItem>
+  >;
+}
+
+/**
+ * Default variation for ProjectCard Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectCard*
+ */
+type ProjectsSliceVariation = ProjectsSliceDefault;
+
+/**
+ * ProjectCard Shared Slice
+ *
+ * - **API ID**: `projects`
+ * - **Description**: Projects
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectsSlice = prismic.SharedSlice<
+  "projects",
+  ProjectsSliceVariation
+>;
+
+/**
  * Primary content in *Testimonials → Default → Primary*
  */
 export interface TestimonialsSliceDefaultPrimary {
@@ -643,6 +803,9 @@ declare module "@prismicio/client" {
       ProductsDocument,
       ProductsDocumentData,
       ProductsDocumentDataSlicesSlice,
+      ProjectsDocument,
+      ProjectsDocumentData,
+      ProjectsDocumentDataSlicesSlice,
       AllDocumentTypes,
       FeaturedProjectsSlice,
       FeaturedProjectsSliceDefaultPrimary,
@@ -665,6 +828,11 @@ declare module "@prismicio/client" {
       ProductCardSliceDefaultItem,
       ProductCardSliceVariation,
       ProductCardSliceDefault,
+      ProjectsSlice,
+      ProjectsSliceDefaultPrimaryRepeatableZoneItem,
+      ProjectsSliceDefaultPrimary,
+      ProjectsSliceVariation,
+      ProjectsSliceDefault,
       TestimonialsSlice,
       TestimonialsSliceDefaultPrimary,
       TestimonialsSliceDefaultItem,
