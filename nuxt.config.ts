@@ -2,6 +2,7 @@
 
 export default {
   devtools: { enabled: true },
+
   modules: [
     '@nuxtjs/prismic'
   ],
@@ -24,5 +25,7 @@ export default {
         path: "/about",
       }
     ]
-  }
+  },
+
+  compatibilityDate: "2024-07-22"
 };
