@@ -5,6 +5,5 @@
     "paths": {
       "@/*": ["./*"]
     }
-  },
-  "include": ["prismicio-types.d.ts", "**/*.ts"]
+  }
 }

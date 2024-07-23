@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div v-if="page">
     <div class="project-card-wrapper section">
       <div class="container-narrow">
@@ -57,4 +57,4 @@ const { data: page } = await useAsyncData("projects", () =>
 console.log(page);
 </script>
 
-<style src="./ProjectCard.scss" scoped></style>
+<style src="./ProjectCard.scss" scoped></style> -->

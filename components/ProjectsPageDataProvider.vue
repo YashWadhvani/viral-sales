@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <slot />
   </div>
@@ -17,4 +17,4 @@ const { data: document } = await useAsyncData("page", async () => {
   }
 });
 provide("ProjectsPageData", document);
-</script>
+</script> -->
