@@ -6,4 +6,5 @@
       "@/*": ["./*"]
     }
   }
+  // "include": ["prismicio-types.d.ts", "**/*.ts"]
 }
