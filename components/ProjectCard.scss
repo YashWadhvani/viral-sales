@@ -1,7 +1,8 @@
 .project-card-wrapper {
   .project-card {
-    padding-bottom: 15rem;
-
+    .project-info {
+      padding-bottom: 15rem;
+    }
     &:last-child {
       padding-bottom: 0px;
     }
@@ -73,7 +74,9 @@
 @media (max-width: 767px) {
   .project-card-wrapper {
     .project-card {
-      padding-bottom: 25rem;
+      .project-info {
+        padding-bottom: 25rem;
+      }
       .project-card-image {
         height: 85rem;
         border-radius: 4rem;

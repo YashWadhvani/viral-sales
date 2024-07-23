@@ -10,6 +10,7 @@
           <div
             v-for="(item, itemIndex) in slice.primary.repeatable_zone"
             :key="itemIndex"
+            class="project-info"
           >
             <div class="project-card-image">
               <img
