@@ -63,6 +63,9 @@
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
+  .project-card-content {
+    font-size: 4.56rem;
+  }
   .tags-container {
     width: 125%;
     .project-tag {
@@ -74,6 +77,9 @@
 @media (max-width: 767px) {
   .project-card-wrapper {
     .project-card {
+      &-content {
+        font-size: 4.56rem;
+      }
       .project-info {
         padding-bottom: 25rem;
       }
@@ -90,7 +96,7 @@
         .project-tags {
           padding-top: 10px;
           .tags-container {
-            width: 150%;
+            width: 175%;
             .project-tag {
               padding: 5px 15px;
               border-radius: 18px;
