@@ -58,3 +58,7 @@ console.log(page);
 </script>
 
 <style src="./ProjectCard.scss" scoped></style> -->
+
+<template>
+  <h1>Hello</h1>
+</template>
