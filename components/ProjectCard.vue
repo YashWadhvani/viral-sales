@@ -56,7 +56,6 @@ const prismic = usePrismic();
 const { data: page } = await useAsyncData("projects", () =>
   prismic.client.getSingle("projects")
 );
-console.log(page);
 </script>
 
 <style src="./ProjectCard.scss" scoped></style>
