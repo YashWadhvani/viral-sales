@@ -152,10 +152,12 @@
     }
 
     .footer-copyright {
+      padding-top: 0;
       .row {
-        flex-direction: row;
+        flex-direction: column-reverse;
       }
       .col-25 {
+        width: 100%;
         p {
           text-align: left;
           font-size: 5rem !important;
