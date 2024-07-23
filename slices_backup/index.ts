@@ -15,5 +15,6 @@ export const components = defineSliceZoneComponents({
     () => import("./HomeProductsSlider/index.vue"),
   ),
   product_card: defineAsyncComponent(() => import("./ProductCard/index.vue")),
+  project_card: defineAsyncComponent(() => import("./ProjectCard/index.vue")),
   testimonials: defineAsyncComponent(() => import("./Testimonials/index.vue")),
 });

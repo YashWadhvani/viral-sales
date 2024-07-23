@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div v-if="page">
     <div class="project-card-wrapper section">
       <div class="container-narrow">
@@ -27,7 +27,7 @@
                     <span
                       v-for="(tag, index) in item.project_tags
                         .split(',')
-                        .map((tag) => tag.trim())"
+                        .map((tag: string) => tag.trim())"
                       :key="index"
                       class="project-tag"
                     >
@@ -49,6 +49,7 @@
 
 <script setup lang="ts">
 import { useAsyncData } from "#app";
+import { usePrismic } from "@prismicio/vue";
 
 const prismic = usePrismic();
 const { data: page } = await useAsyncData("projects", () =>
@@ -57,8 +58,4 @@ const { data: page } = await useAsyncData("projects", () =>
 console.log(page);
 </script>
 
-<style src="./ProjectCard.scss" scoped></style> -->
-
-<template>
-  <h1>Hello</h1>
-</template>
+<style src="./ProjectCard.scss" scoped></style>

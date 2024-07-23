@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div>
     <slot />
   </div>
@@ -6,15 +6,16 @@
 
 <script setup>
 const { client } = usePrismic();
-//   console.log('jheriu')
+
 const { data: document } = await useAsyncData("page", async () => {
   const document = await client.getByUID("projects", "projects");
   if (document) {
-    console.log(document);
+    console.log(document); // For debugging purposes
     return document;
   } else {
     throw createError({ statusCode: 404, message: "Source Not Found" });
   }
 });
+
 provide("ProjectsPageData", document);
-</script> -->
+</script>
