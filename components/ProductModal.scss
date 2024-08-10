@@ -38,9 +38,8 @@
 
     .modal-details {
       h2 {
-        text-align: center;
         font-size: 4rem;
-        margin: 1rem 0;
+        margin: 2rem 1rem;
       }
       .category {
         border: 1px solid #262626;
@@ -48,11 +47,50 @@
         width: fit-content;
         padding: 5px 8px;
         font-size: 2rem;
-        margin: 1rem 0;
+        margin: 2rem 0;
       }
       p {
         font-size: 2rem;
         padding: 5px 8px;
+        margin: 2rem 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .modal-overlay {
+    .close-button {
+      width: 5rem;
+      height: 5rem;
+      font-size: 4rem;
+    }
+    .modal-content {
+      width: 80%;
+      h2 {
+        font-size: 8rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .modal-overlay {
+    .close-button {
+      width: 6rem;
+      height: 6rem;
+      font-size: 5rem;
+    }
+    .modal-content {
+      width: 80%;
+      h2 {
+        font-size: 8rem;
+        padding: 5rem 0;
+        margin: 2rem 1rem;
+      }
+      p {
+        font-size: 6rem !important;
+        margin: 2rem -1rem;
       }
     }
   }
